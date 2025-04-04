@@ -25,12 +25,7 @@ const Middleware = () => {
           <div key={index}>
             <h2>Product: {order.productId.name}</h2>
             <p>Customer: {order.customerName}</p>
-            <p>Phone: {order.phoneNumber}</p>
             <p>Quantity: {order.quantity}</p>
-            <p>Payment Method: {order.paymentMethod}</p>
-            <p>Payment Status: {order.paymentStatus}</p>
-            <p>Total Cost: ₹{order.quantity * order.productId.price}</p> {/* Calculate total cost */}
-            <p>Order Date: {new Date(order.orderDate).toLocaleString()}</p>
             <p>Status: {order.status}</p>
             <hr />
           </div>

@@ -1,68 +1,116 @@
 import React, { useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const OrderDetails = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const product = location.state?.product; // Get product details from state
+
   const [customerName, setCustomerName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [address, setAddress] = useState("");
   const [quantity, setQuantity] = useState(1);
-  const [paymentMethod, setPaymentMethod] = useState("G-Pay");
-  const navigate = useNavigate();
-  const location = useLocation();
-  const { productId, productPrice } = location.state; // Get productId and productPrice from navigation state
+  const [paymentMethod, setPaymentMethod] = useState("Cash");
 
-  const placeOrder = async () => {
+  const pricePerUnit = product?.price || 0; // Default price if product is not passed
+  const totalPrice = quantity * pricePerUnit;
+
+  const handleOrder = async () => {
+    if (!customerName || !phoneNumber || !address || quantity <= 0) {
+      alert("Please fill in all fields correctly.");
+      return;
+    }
+
     try {
       const response = await fetch("http://localhost:5000/order", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          productId,
+          productId: product?._id,
           customerName,
           phoneNumber,
+          address,
           quantity,
+          totalPrice,
           paymentMethod,
-          paymentStatus: paymentMethod === "G-Pay" ? "Paid" : "Pending"
-        })
+        }),
       });
       const data = await response.json();
       alert(data.message);
-      navigate("/customer"); // Redirect back to the customer page
+      if (response.ok) {
+        navigate("/middleware"); // Redirect to Middleware page after successful order
+      }
     } catch (error) {
       console.error("Error placing order:", error);
+      alert("An error occurred. Please try again.");
     }
   };
 
   return (
-    <div>
-      <h1>Order Details</h1>
-      <input
-        type="text"
-        placeholder="Your Name"
-        value={customerName}
-        onChange={(e) => setCustomerName(e.target.value)}
-      />
-      <br />
-      <input
-        type="text"
-        placeholder="Phone Number"
-        value={phoneNumber}
-        onChange={(e) => setPhoneNumber(e.target.value)}
-      />
-      <br />
-      <input
-        type="number"
-        placeholder="Quantity"
-        value={quantity}
-        onChange={(e) => setQuantity(e.target.value)}
-      />
-      <br />
-      <p>Total Cost: ₹{quantity * productPrice}</p> {/* Display total cost */}
-      <select value={paymentMethod} onChange={(e) => setPaymentMethod(e.target.value)}>
-        <option value="G-Pay">G-Pay</option>
-        <option value="Cash">Cash</option>
-      </select>
-      <br />
-      <button onClick={placeOrder}>Place Order</button>
+    <div className="container mt-5">
+      <h1 className="text-center text-success mb-4">Order Details</h1>
+      <div className="card mx-auto" style={{ maxWidth: "500px" }}>
+        <div className="card-body">
+          <div className="mb-3">
+            <label>Customer Name</label>
+            <input
+              type="text"
+              className="form-control"
+              value={customerName}
+              onChange={(e) => setCustomerName(e.target.value)}
+            />
+          </div>
+          <div className="mb-3">
+            <label>Phone Number</label>
+            <input
+              type="text"
+              className="form-control"
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+            />
+          </div>
+          <div className="mb-3">
+            <label>Address</label>
+            <textarea
+              className="form-control"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+            ></textarea>
+          </div>
+          <div className="mb-3">
+            <label>Quantity</label>
+            <input
+              type="number"
+              className="form-control"
+              value={quantity}
+              onChange={(e) => setQuantity(e.target.value)}
+            />
+          </div>
+          <div className="mb-3">
+            <p>
+              <strong>Price per Unit:</strong> ₹{pricePerUnit}
+            </p>
+            <p>
+              <strong>Total Price:</strong> ₹{totalPrice}
+            </p>
+          </div>
+          <div className="mb-3">
+            <label>Payment Method</label>
+            <select
+              className="form-select"
+              value={paymentMethod}
+              onChange={(e) => setPaymentMethod(e.target.value)}
+            >
+              <option value="Cash">Cash</option>
+              <option value="G-Pay">G-Pay</option>
+            </select>
+          </div>
+          <button className="btn btn-success w-100" onClick={handleOrder}>
+            Place Order
+          </button>
+        </div>
+      </div>
     </div>
   );
 };

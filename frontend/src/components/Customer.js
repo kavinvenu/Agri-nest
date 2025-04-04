@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Customer = () => {
   const [products, setProducts] = useState([]);
-  const [customerName] = useState("Test Customer"); // Replace with logged-in customer's name
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -18,44 +19,41 @@ const Customer = () => {
     fetchProducts();
   }, []);
 
-  const placeOrder = async (productId) => {
-    const quantity = prompt("Enter quantity:");
-    if (!quantity || isNaN(quantity) || quantity <= 0) {
-      alert("Invalid quantity!");
-      return;
-    }
-
-    try {
-      const response = await fetch("http://localhost:5000/order", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ productId, customerName, quantity }),
-      });
-      const data = await response.json();
-      alert(data.message);
-    } catch (error) {
-      console.error("Error placing order:", error);
-    }
+  const placeOrder = (product) => {
+    navigate("/order-details", { state: { product } });
   };
 
   return (
-    <div>
-      
-      <h1>Available Products</h1>
+    <div className="container mt-5">
+      <h1 className="text-center text-success mb-4">Available Products</h1>
       {products.length > 0 ? (
-        products.map((product, index) => (
-          <div key={index}>
-            <h2>{product.name}</h2>
-            <p>Quantity: {product.quantity}</p>
-            <p>Price: ₹{product.price}</p>
-            <img src={product.image} alt={product.name} width="150" />
-            <br />
-            <button onClick={() => placeOrder(product._id)}>Order</button>
-            <hr />
-          </div>
-        ))
+        <div className="row">
+          {products.map((product, index) => (
+            <div className="col-md-4 mb-4" key={index}>
+              <div className="card h-100">
+                <img
+                  src={product.image}
+                  className="card-img-top"
+                  alt={product.name}
+                  style={{ height: "200px", objectFit: "cover" }}
+                />
+                <div className="card-body">
+                  <h5 className="card-title">{product.name}</h5>
+                  <p className="card-text">Quantity: {product.quantity}</p>
+                  <p className="card-text">Price: ₹{product.price}</p>
+                  <button
+                    className="btn btn-success w-100"
+                    onClick={() => placeOrder(product)}
+                  >
+                    Order
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       ) : (
-        <p>No products available at the moment.</p>
+        <p className="text-center text-danger">No products available at the moment.</p>
       )}
     </div>
   );
