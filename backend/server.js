@@ -4,6 +4,15 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
 const multer = require("multer");
+const cloudinary = require("cloudinary").v2;
+const streamifier = require("streamifier");
+
+cloudinary.config({
+  cloud_name: "drzfhzqwk",
+  api_key: "157443889296636",
+  api_secret: "8Wj4Ygyw0bdtWEr3gu72DIx13bM"
+});
+
 
 const app = express();
 app.use(express.json());
@@ -29,7 +38,9 @@ const productSchema = new mongoose.Schema({
   name: String,
   quantity: Number,
   price: Number,
-  image: String
+  image: String,
+  uploadedBy: String, // 👈 ADD this
+  status: { type: String, default: "In warehouse" } // 👈 AND this
 });
 const Product = mongoose.model("Product", productSchema);
 
@@ -64,14 +75,15 @@ app.post("/login", async (req, res) => {
   res.json({ token, role: user.role }); // Send role to the frontend
 });
 
-// Upload product endpoint
 app.post("/upload", upload.single("image"), async (req, res) => {
-  const { name, quantity, price } = req.body;
+  const { name, quantity, price, uploadedBy } = req.body;
   const newProduct = new Product({ 
     name, 
     quantity, 
     price, 
-    image: `/uploads/${req.file.filename}` // Corrected template string
+    image: `/uploads/${req.file.filename}`,
+    uploadedBy,
+    status: "In warehouse"
   });
   await newProduct.save();
   res.json({ message: "Product uploaded successfully!" });
@@ -87,10 +99,12 @@ app.get("/products", async (req, res) => {
     }
   });
   const orderSchema = new mongoose.Schema({
-    productId: { type: mongoose.Schema.Types.ObjectId, ref: "Product", required: true },
-    customerName: { type: String, required: true },
-    quantity: { type: Number, required: true },
-    status: { type: String, default: "Pending" }, // Order status (e.g., Pending, Completed)
+    name: String,
+    quantity: Number,
+    price: Number,
+    image: String,
+    uploadedBy: String, // 👈 ADD this
+    status: { type: String, default: "In warehouse" } // 👈 AND this
   });
   const Order = mongoose.model("Order", orderSchema);
 
