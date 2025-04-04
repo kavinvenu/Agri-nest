@@ -1,6 +1,10 @@
 import React, { useState } from "react";
+import { useLocation } from "react-router-dom"; // 👈 import hook to receive state
 
 const Farmer = () => {
+  const location = useLocation();
+  const username = location.state?.username; // 👈 get username from router state
+
   const [product, setProduct] = useState({
     name: "",
     quantity: "",
@@ -27,7 +31,8 @@ const Farmer = () => {
 
   return (
     <div>
-      <h1>Upload Product</h1>
+      <h1>Welcome, {username}!</h1> {/* 👈 Display the username */}
+      <h2>Upload Product</h2>
       <form onSubmit={uploadProduct}>
         <input
           type="text"

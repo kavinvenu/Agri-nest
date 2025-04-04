@@ -15,12 +15,13 @@ const Login = () => {
     const data = await response.json();
     if (data.token) {
       alert("Login successful!");
+      const routeState = { username: username }; // 👈 pass username via router state
       if (data.role === "Farmer") {
-        navigate("/farmer");
+        navigate("/farmer", { state: routeState });
       } else if (data.role === "Customer") {
-        navigate("/customer");
+        navigate("/customer", { state: routeState });
       } else if (data.role === "Middleware") {
-        navigate("/middleware");
+        navigate("/middleware", { state: routeState });
       }
     } else {
       alert("Login failed!");
