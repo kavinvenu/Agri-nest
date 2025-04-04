@@ -4,11 +4,12 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
 const multer = require("multer");
+const path = require("path");
 
 const app = express();
 app.use(express.json());
 app.use(cors({ origin: "http://localhost:3000" })); // Restrict CORS to frontend origin
-app.use("/uploads", express.static("uploads")); // Serve static files from uploads directory
+app.use("/uploads", express.static(path.join(__dirname, "uploads"))); // Serve static files from uploads directory
 
 const JWT_SECRET = "your_secret_key";
 
@@ -50,8 +51,8 @@ const orderSchema = new mongoose.Schema({
 const Order = mongoose.model("Order", orderSchema);
 
 const storage = multer.diskStorage({
-  destination: "uploads/",
-  filename: (req, file, cb) => cb(null, file.originalname),
+  destination: path.join(__dirname, "uploads/"),
+  filename: (req, file, cb) => cb(null, `${Date.now()}-${file.originalname}`),
 });
 const upload = multer({ storage });
 
@@ -84,7 +85,7 @@ app.post("/upload", upload.single("image"), async (req, res) => {
     name,
     quantity,
     price,
-    image: `uploads/${req.file.filename}`,
+    image: req.file.path, // Save the full path to the image
   });
   await newProduct.save();
   res.json({ message: "Product uploaded successfully!" });
