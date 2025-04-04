@@ -1,0 +1,36 @@
+.products-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.product-card {
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-card-title {
+    font-size: 1.5rem;
+    color: green !important;
+}
+
+.product-card-text {
+    color: #333;
+}
+
+.product-btn-success {
+    background-color: #28a745 !important; /* Green background */
+    border-color: #28a745 !important; /* Green border */
+    color: white !important; /* White text */
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.product-btn-success:hover {
+    background-color: #218838 !important; /* Darker green on hover */
+    border-color: #1e7e34 !important;
+}

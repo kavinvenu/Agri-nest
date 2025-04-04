@@ -1,0 +1,27 @@
+/* Farmer.css */
+.farmer-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .farmer-card {
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .farmer-label {
+    color: green;
+  }
+  
+  .farmer-btn {
+    background-color: #28a745;
+    border-color: #28a745;
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+  
+  .farmer-btn:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+  }
+  

@@ -1,0 +1,87 @@
+/* styles.css */
+
+/* Global styles */
+body {
+  background-color: #f0f8f5;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+}
+
+/* Container styles */
+.container {
+  max-width: 400px; /* Adjust the container size */
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Card styles */
+.card {
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* Text styles */
+.text-primary {
+  color: green !important;
+}
+
+.text-success {
+  color: #28a745 !important;
+}
+
+/* Button styles */
+.btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+  border-color: #1e7e34;
+}
+
+/* Form styles */
+.form-label {
+  color: green;
+}
+
+.form-control {
+  border-color: #ced4da;
+}
+
+.form-control:focus {
+  border-color: #80bdff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Center alignment */
+.text-center {
+  text-align: center;
+}
+
+/* Margin and padding utilities */
+.mb-4 {
+  margin-bottom: 1.5rem !important;
+}
+
+.mt-5 {
+  margin-top: 3rem !important;
+}
+
+.p-4 {
+  padding: 1.5rem !important;
+}
+
+.border {
+  border: 1px solid #dee2e6 !important;
+}
+
+.rounded {
+  border-radius: .25rem !important;
+}

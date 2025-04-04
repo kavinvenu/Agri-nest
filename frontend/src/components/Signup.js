@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import './Signup.css';
 
 const Signup = () => {
   const [username, setUsername] = useState("");
@@ -21,27 +22,47 @@ const Signup = () => {
   };
 
   return (
-    <div>
-      <h1>Signup</h1>
-      <input
-        type="text"
-        placeholder="Username"
-        onChange={(e) => setUsername(e.target.value)}
-      />
-      <br />
-      <input
-        type="password"
-        placeholder="Password"
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <br />
-      <select onChange={(e) => setRole(e.target.value)}>
-        <option value="Farmer">Farmer</option>
-        <option value="Customer">Customer</option>
-        <option value="Middleware">Middleware</option>
-      </select>
-      <br />
-      <button onClick={register}>Signup</button>
+    <div className="container mt-5">
+      <h1 className="text-center text-primary mb-4">Signup</h1>
+      <div className="p-4 border rounded shadow-sm bg-light mx-auto" style={{ maxWidth: "400px" }}>
+        <div className="mb-3">
+          <label className="form-label">Username</label>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Enter your username"
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </div>
+        <div className="mb-3">
+          <label className="form-label">Password</label>
+          <input
+            type="password"
+            className="form-control"
+            placeholder="Enter your password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <div className="mb-3">
+          <label className="form-label">Role</label>
+          <select
+            className="form-select"
+            onChange={(e) => setRole(e.target.value)}
+          >
+            <option value="Farmer">Farmer</option>
+            <option value="Customer">Customer</option>
+            <option value="Middleware">Middleware</option>
+          </select>
+        </div>
+        <button className="btn btn-success w-100" onClick={register}>
+          Signup
+        </button>
+        <div className="text-center mt-3">
+          <p>
+            Already have an account? <a href="/">Login</a>
+          </p>
+        </div>
+      </div>
     </div>
   );
 };

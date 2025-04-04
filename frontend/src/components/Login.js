@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import './Login.css';
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -28,25 +29,36 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <h1>Login</h1>
-      <input
-        type="text"
-        placeholder="Username"
-        onChange={(e) => setUsername(e.target.value)}
-      />
-      <br />
-      <input
-        type="password"
-        placeholder="Password"
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <br />
-      <button onClick={login}>Login</button>
-      <br />
-      <p>
-        Don't have an account? <a href="/signup">Signup</a>
-      </p>
+    <div className="container mt-5">
+      <h1 className="text-center text-primary mb-4">Login</h1>
+      <div className="p-4 border rounded shadow-sm bg-light">
+        <div className="mb-3">
+          <label className="form-label">Username</label>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Enter your username"
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </div>
+        <div className="mb-3">
+          <label className="form-label">Password</label>
+          <input
+            type="password"
+            className="form-control"
+            placeholder="Enter your password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <button className="btn btn-success w-100" onClick={login}>
+          Login
+        </button>
+        <div className="text-center mt-3">
+          <p>
+            Don't have an account? <a href="/signup">Signup</a>
+          </p>
+        </div>
+      </div>
     </div>
   );
 };

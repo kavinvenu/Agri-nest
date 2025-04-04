@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./Customer.css"; // Import the specific CSS file
 
 const Customer = () => {
   const [products, setProducts] = useState([]);
@@ -24,28 +25,26 @@ const Customer = () => {
   };
 
   return (
-    <div className="container mt-5">
+    <div className="products-container mt-5">
       <h1 className="text-center text-success mb-4">Available Products</h1>
       {products.length > 0 ? (
         <div className="row">
           {products.map((product, index) => (
             <div className="col-md-4 mb-4" key={index}>
-              <div className="card h-100">
-                <img
-                  src={product.image}
-                  className="card-img-top"
-                  alt={product.name}
-                  style={{ height: "200px", objectFit: "cover" }}
-                />
-                <div className="card-body">
-                  <h5 className="card-title">{product.name}</h5>
-                  <p className="card-text">Quantity: {product.quantity}</p>
-                  <p className="card-text">Price: ₹{product.price}</p>
+              <div className="card h-100 shadow-sm product-card">
+                <div className="card-body text-center">
+                  <h5 className="card-title product-card-title">{product.name}</h5>
+                  <p className="card-text product-card-text">
+                    <strong>Quantity:</strong> {product.quantity}
+                  </p>
+                  <p className="card-text product-card-text">
+                    <strong>Price:</strong> ₹{product.price}
+                  </p>
                   <button
-                    className="btn btn-success w-100"
+                    className="btn product-btn-success w-100"
                     onClick={() => placeOrder(product)}
                   >
-                    Order
+                    Order Now
                   </button>
                 </div>
               </div>
@@ -53,7 +52,9 @@ const Customer = () => {
           ))}
         </div>
       ) : (
-        <p className="text-center text-danger">No products available at the moment.</p>
+        <p className="text-center text-danger">
+          No products available at the moment.
+        </p>
       )}
     </div>
   );

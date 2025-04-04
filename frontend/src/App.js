@@ -5,6 +5,8 @@ import Farmer from "./components/Farmer";
 import Customer from "./components/Customer";
 import Middleware from "./components/Middleware";
 import OrderDetails from "./components/OrderDetails";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./styles.css";// Import the custom CSS file
 
 const App = () => {
   return (

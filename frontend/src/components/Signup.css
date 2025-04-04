@@ -1,0 +1,27 @@
+/* Signup.css */
+.signup-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .signup-card {
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .signup-label {
+    color: green;
+  }
+  
+  .signup-btn {
+    background-color: #28a745;
+    border-color: #28a745;
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+  
+  .signup-btn:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+  }
+  

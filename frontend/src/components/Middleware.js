@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import './Middleware.css';
 
 const Middleware = () => {
   const [orders, setOrders] = useState([]);
@@ -18,20 +19,35 @@ const Middleware = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Orders</h1>
+    <div className="products-container mt-5">
+      <h1 className="text-center text-success mb-4">Orders</h1>
       {orders.length > 0 ? (
-        orders.map((order, index) => (
-          <div key={index}>
-            <h2>Product: {order.productId.name}</h2>
-            <p>Customer: {order.customerName}</p>
-            <p>Quantity: {order.quantity}</p>
-            <p>Status: {order.status}</p>
-            <hr />
-          </div>
-        ))
+        <div className="row">
+          {orders.map((order, index) => (
+            <div className="col-md-4 mb-4" key={index}>
+              <div className="card h-100 shadow-sm product-card">
+                <div className="card-body text-center">
+                  <h5 className="card-title product-card-title">
+                    {order.productId?.name || "Unknown Product"}
+                  </h5>
+                  <p className="card-text product-card-text">
+                    <strong>Customer:</strong> {order.customerName}
+                  </p>
+                  <p className="card-text product-card-text">
+                    <strong>Quantity:</strong> {order.quantity}
+                  </p>
+                  <p className="card-text product-card-text">
+                    <strong>Status:</strong> {order.status}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       ) : (
-        <p>No orders available at the moment.</p>
+        <p className="text-center text-danger">
+          No orders available at the moment.
+        </p>
       )}
     </div>
   );
