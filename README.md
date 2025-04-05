@@ -33,7 +33,7 @@ Agri Nest is a smart digital marketplace that connects farmers directly with cus
  🚀 How It Works
 
 1. User Sign Up: Registers as Farmer, Customer, or Middleware.
-
+    ![Image](https://github.com/user-attachments/assets/dfe4ed4d-bd9f-4165-8d87-a0d5ee4fedab)
 
 2. Login: Secure role-based authentication.
 
