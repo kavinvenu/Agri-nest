@@ -2,6 +2,10 @@ Agri Nest 🌱
 
 Agri Nest is a smart digital marketplace that connects farmers directly with customers and retailers in Tamil Nadu, cutting out middlemen to increase farmer profits and ensure better quality produce. This full-stack web app was built using React, Bootstrap, CSS, Node.js, and MongoDB.
 
+🎥 Watch Full Workflow Demo
+
+[video](https://github.com/user-attachments/assets/12a2451a-32e0-4a41-af9b-ca28f867d2a6)
+
 🔑 Key Features
 
 - Role-based Login/Sign-Up for Farmers, Customers, and Middleware.
@@ -91,9 +95,7 @@ Agri Nest is a smart digital marketplace that connects farmers directly with cus
 - Implement Real-time Tracking & Notifications.
 - Include Demand Forecasting using ML models.
   
-🎥 Watch Full Workflow Demo
 
-[video](https://github.com/user-attachments/assets/12a2451a-32e0-4a41-af9b-ca28f867d2a6)
 
 
 
