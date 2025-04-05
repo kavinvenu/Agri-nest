@@ -68,6 +68,9 @@ Agri Nest is a smart digital marketplace that connects farmers directly with cus
 
     ![Screenshot 2025-04-05 082613](https://github.com/user-attachments/assets/aae19b73-8a91-4308-8f63-4eed03d916a8)
 
+   - Before Packaging , process the product by sorting and  grading.
+   - Does the quality check of products.
+   - Integrate LLM integrated image analysis.
    - Coordinate Agri Hub storage and delivery.
 
 6. Storage & Delivery:
@@ -83,11 +86,15 @@ Agri Nest is a smart digital marketplace that connects farmers directly with cus
   
  📈 Future Enhancements
  
-- Integrate AI Quality Detection (UV/Spectroscopy Scanners).
+- Farmers Dashboard  for the sales of  their products and profit.
 - Add UPI Payment Integration.
 - Implement Real-time Tracking & Notifications.
-- Include Demand Forecasting using ML models.
+- Include Demand Forecasting using ML models.
   
+🎥 Watch Full Workflow Demo
+
+[video](https://github.com/user-attachments/assets/12a2451a-32e0-4a41-af9b-ca28f867d2a6)
+
 
 
 
