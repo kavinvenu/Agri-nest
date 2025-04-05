@@ -7,7 +7,7 @@ import Middleware from "./components/Middleware";
 import OrderDetails from "./components/OrderDetails";
 import SelectLocation from "./components/SelectLocation";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./styles.css";// Import the custom CSS file
+import "./styles.css"; // Import the custom CSS file
 
 const App = () => {
   return (

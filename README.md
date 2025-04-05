@@ -1,70 +1,71 @@
-# Getting Started with Create React App
+🌾 Agri Nest - Smart Digital Marketplace for Farmers & Consumers
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Agri Nest is a full-stack web application designed to connect Tamil Nadu farmers directly with customers and retailers, removing middlemen, reducing food wastage, and increasing farmer profits. It utilizes AI-driven pricing, decentralized Agri Hubs, and real-time logistics to create a seamless agri-commerce experience.
 
-## Available Scripts
 
-In the project directory, you can run:
+🚀 Features
 
-### `npm start`
+- 🔐 Role-Based Login & Signup  
+  - Sign up as Farmer, Customer, or Middleware
+  - Separate dashboards and functionalities based on role
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- 🌱 Farmer Dashboard
+  - Upload product details with name, image, quantity & price  
+  - Submit produce for sale through Agri Nest
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- 🛒 Customer Dashboard  
+  - View available products with images and prices  
+  - Place orders through a simple form  
+  - Receive delivery from Agri Hubs (no middlemen)
 
-### `npm test`
+- 🔎 Middleware Dashboard  
+  - View & manage available products  
+  - Help coordinate storage at Agri Hubs
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- 🏢 Agri Hubs  
+  - Products from farmers are stored here  
+  - Deliveries are dispatched directly to *retailers and customers*
 
-### `npm run build`
+- 💰 Increased Farmer Profit  
+  - Eliminates traditional middlemen  
+  - AI-based dynamic pricing ensures fair trade
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+🧱 Tech Stack
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+| Frontend  | Backend  | Database | Styling & Tools |
+|-----------|----------|----------|------------------|
+| React     | Node.js  | MongoDB  | Bootstrap, CSS   |
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+🖥 Application Flow
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Signup/Login Page 
+   Users select their role: Farmer, Customer, or Middleware
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+2. Farmer  
+   - Upload product info (name, image, quantity, price)  
+   - Product data stored in MongoDB  
+   - Sent to Agri Hubs for processing
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+3. Customer 
+   - Views all available produce  
+   - Clicks "Order Now"  
+   - Fills in delivery details and submits order
+   - 
 
-## Learn More
+4. Middleware  
+   - Monitors product listings  
+   - Coordinates Agri Hub activities
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+5. Order Fulfillment  
+   - Products stored in Agri Hubs  
+   - Delivered directly to customers and retailers
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+💡 Benefits
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- ✅ Direct Farmer-to-Consumer model (D2C)
+- ✅ Reduces the middlemen work & increases farmer profit by 10–15%
+- ✅ Encourages quality control and transparency
+- ✅ Reduces wastage with efficient Agri Hubs
+- ✅ Scalable and easily accessible via web
